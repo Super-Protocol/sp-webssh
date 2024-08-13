@@ -362,12 +362,16 @@ class IndexHandler(MixinHandler, tornado.web.RequestHandler):
         return value, filename
 
     def get_hostname(self):
+        '''
         value = self.get_value('hostname')
         if not (is_valid_hostname(value) or is_valid_ip_address(value)):
             raise InvalidValueError('Invalid hostname: {}'.format(value))
         return value
+        '''
+        return '127.0.0.1'
 
     def get_port(self):
+        '''
         value = self.get_argument('port', u'')
         if not value:
             return DEFAULT_PORT
@@ -376,6 +380,8 @@ class IndexHandler(MixinHandler, tornado.web.RequestHandler):
         if port is None or not is_valid_port(port):
             raise InvalidValueError('Invalid port: {}'.format(value))
         return port
+        '''
+        return 22
 
     def lookup_hostname(self, hostname, port):
         key = hostname if port == 22 else '[{}]:{}'.format(hostname, port)

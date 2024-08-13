@@ -599,8 +599,8 @@ jQuery(function($){
   function validate_form_data(data) {
     clean_data(data);
 
-    var hostname = data.get('hostname'),
-        port = data.get('port'),
+    var hostname = '127.0.0.1', //data.get('hostname'),
+        port = 22, //data.get('port'),
         username = data.get('username'),
         pk = data.get('privatekey'),
         result = {
